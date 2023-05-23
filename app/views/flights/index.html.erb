@@ -1,2 +1,31 @@
-<h1>Flights#index</h1>
-<p>Find me in app/views/flights/index.html.erb</p>
+<h1>Search Flights</h1>
+
+<%# This form is to search flights already created. Must search the url path, not the model, and method must be "get" as we are not inputting new data, only retrieving %>
+
+<%= form_with url: root_path, method: "get" do |form| %>
+	<%# Must use .map instead of .each when trying to manipulate each data point. Each would only be used to iterate through different points and show them %>
+	<%= form.label :departure_airport_id %>
+	<%= form.select :departure_airport_id,
+        @flights.map { |flight| [flight.departure_airport.airport_code] } %>
+	<br>
+	<br>
+	<%= form.label :arrival_airport_id %>
+	<%= form.select :arrival_airport_id,
+        @flights.map { |flight| [flight.arrival_airport.airport_code] } %>
+	<br>
+	<br>
+	<%# <%= form.label "Number of passengers" %>
+	<%# <%= form.select :departure_airport_id, %>
+	<%# @flights.map { |flight| [flight.departure_airport.airport_code] } %>
+
+	<%# see flights_helper.rb for formatted date info, :start_date_formatted %>
+	<%= form.label :start_datetime, "Departure Date" %>
+	<%= form.select :start_datetime,
+        options_from_collection_for_select(
+          @flights,
+          :start_datetime,
+          method(:start_date_formatted)) %>
+	<br>
+	<br>
+	<%= form.submit "Search" %>
+<% end %>

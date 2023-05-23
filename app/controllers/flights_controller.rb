@@ -1,5 +1,10 @@
 class FlightsController < ApplicationController
   def index
-    @flights = Flight.all
+    # if params[:departure_airport_id].present?
+    #   @flights = Flight.where(departure_airport_id: params[:departure_airport_id])
+    # else
+      @flights = Flight.all
+    # end
   end
+
 end
