@@ -32,3 +32,12 @@
 	<br>
 	<%= form.submit "Search" %>
 <% end %>
+
+<% if params[:commit] == 'Search' %>
+	<ul>
+		<li><%= @departure_param %></li>
+		<li><%= @arrival_param %></li>
+		<li><%= @number_of_passengers_param %></li>
+		<li><%= @departure_date_param %></li>
+	</ul>
+<% end %>
