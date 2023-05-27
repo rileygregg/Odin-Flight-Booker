@@ -35,9 +35,18 @@
 
 <% if params[:commit] == 'Search' %>
 	<ul>
-		<li><%= @departure_param %></li>
-		<li><%= @arrival_param %></li>
-		<li><%= @number_of_passengers_param %></li>
-		<li><%= @departure_date_param %></li>
+		<li>Departing From: <%= @departure_param %></li>
+		<li>Arriving in: <%= @arrival_param %></li>
+		<li>Number of seats selected: <%= @number_of_passengers_param %></li>
+		<li>Date of departure: <%= @departure_date_param %></li>
+	</ul>
+<% end %>
+
+<h3>All flights</h3>
+
+<% @flights.each do |flight| %>
+	<ul>
+		<li><%= flight.departure_airport.airport_code %></li>
+		<li><%= flight.arrival_airport.airport_code %></li>
 	</ul>
 <% end %>

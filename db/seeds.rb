@@ -13,6 +13,9 @@ end
 # Airports
 Airport.create(:airport_code => 'NYC')
 Airport.create(:airport_code => 'YYZ')
+Airport.create(:airport_code => 'SFO')
+Airport.create(:airport_code => 'CHI')
+
 
 # Flights
 
@@ -25,6 +28,14 @@ Flight.create(:departure_airport_id => 1,
 Flight.create(:departure_airport_id => 2,
               :arrival_airport_id => 1,
               :start_datetime => Time.new(2023, 05, 24, 8, 0),
+              :flight_duration => convert_time_to_integer(2))
+Flight.create(:departure_airport_id => 3,
+              :arrival_airport_id => 1,
+              :start_datetime => Time.new(2023, 05, 30, 8, 0),
+              :flight_duration => convert_time_to_integer(2))
+Flight.create(:departure_airport_id => 4,
+              :arrival_airport_id => 3,
+              :start_datetime => Time.new(2023, 05, 29, 8, 0),
               :flight_duration => convert_time_to_integer(2))
 
 
